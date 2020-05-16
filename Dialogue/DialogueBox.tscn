@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Dialogue/DialogueBox.gd" type="Script" id=1]
+
+[node name="DialogueBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_top = 140.0
+margin_right = 320.0
+margin_bottom = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+margin_right = 319.0
+margin_bottom = 40.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialogue" type="Label" parent="Panel/HBoxContainer"]
+margin_left = 80.0
+margin_top = 13.0
+margin_right = 239.0
+margin_bottom = 27.0
+text = "some plain text example"
+percent_visible = 0.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.02
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
