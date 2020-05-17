@@ -13,5 +13,10 @@
     {
       "character": "test",
       "speech": "I mean, you are reading this, right?"
+    },  
+  "3":
+    {
+      "character": "test",
+      "speech": "Adding new lines of dialogue is easy too! But I wonder what will happen if I make the line very long... like this for example! Wow, that's a lot to read..."
     }
 }

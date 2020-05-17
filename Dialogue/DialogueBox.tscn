@@ -34,7 +34,12 @@ margin_bottom = 27.0
 text = "some plain text example"
 percent_visible = 0.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="DialogueTimer" type="Timer" parent="."]
 wait_time = 0.02
 autostart = true
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[node name="DialogueLockout" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+[connection signal="timeout" from="DialogueTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="DialogueLockout" to="." method="_on_DialogueLockout_timeout"]
