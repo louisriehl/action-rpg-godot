@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://World/SignPost.png" type="Texture" id=1]
 [ext_resource path="res://World/SignPost.gd" type="Script" id=2]
+[ext_resource path="res://Dialogue/DialogueLoader.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
@@ -31,5 +32,9 @@ collision_mask = 2
 [node name="CollisionZone" type="CollisionShape2D" parent="ActivationZone"]
 position = Vector2( 0, 3 )
 shape = SubResource( 2 )
+
+[node name="DialogueLoader" parent="." instance=ExtResource( 3 )]
 [connection signal="body_entered" from="ActivationZone" to="." method="_on_ActivationZone_body_entered"]
 [connection signal="body_exited" from="ActivationZone" to="." method="_on_ActivationZone_body_exited"]
+
+[editable path="DialogueLoader"]
