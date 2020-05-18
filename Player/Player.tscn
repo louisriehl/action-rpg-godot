@@ -811,7 +811,7 @@ material = SubResource( 1 )
 position = Vector2( 0, -9 )
 texture = ExtResource( 1 )
 hframes = 60
-frame = 18
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -848,7 +848,7 @@ parameters/playback = SubResource( 48 )
 parameters/Attack/blend_position = Vector2( 0, 1 )
 parameters/Idle/blend_position = Vector2( 0, 1 )
 parameters/Roll/blend_position = Vector2( 0, 1 )
-parameters/Run/blend_position = Vector2( 0, 1 )
+parameters/Run/blend_position = Vector2( 0.00191939, 1.01103 )
 
 [node name="SwordPivot" type="Position2D" parent="."]
 position = Vector2( 0, -4 )
