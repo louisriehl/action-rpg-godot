@@ -90,7 +90,6 @@ func _on_Stats_no_health():
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
 
-
 func _on_HurtBox_invincibility_started():
 	animationPlayer.play("Start")
   
