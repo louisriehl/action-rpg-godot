@@ -19,7 +19,7 @@ func _physics_process(delta):
 	if collide:
 		detonate()
 
-func _on_HitBox_area_entered(area):
+func _on_HitBox_area_entered(_area):
 	queue_free()
 
 func detonate():
