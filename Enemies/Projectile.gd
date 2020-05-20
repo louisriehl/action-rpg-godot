@@ -8,10 +8,6 @@ var velocity : Vector2 = Vector2.ZERO
 var target : Vector2
 
 func _ready():
-	# test to simulate real behavior where we'll pass this field in
-	var player : KinematicBody2D = get_tree().current_scene.get_node("/root/ProjectileTest/Player")
-	# when instanced, rotate object to orient towards target
-	target = player.global_position
 	look_at(target)
 
 func _physics_process(delta):

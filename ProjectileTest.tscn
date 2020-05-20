@@ -4,7 +4,7 @@
 [ext_resource path="res://Enemies/Projectile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=3]
 [ext_resource path="res://TileMaps/DirtCliffTileMap.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/ProjectileEnemy.tscn" type="PackedScene" id=5]
 
 [node name="ProjectileTest" type="Node2D"]
 
@@ -21,9 +21,9 @@ position = Vector2( 16, 8 )
 position = Vector2( 136, 104 )
 
 [node name="DirtCliffTileMap" parent="." instance=ExtResource( 4 )]
-tile_data = PoolIntArray( 5, 0, 3, 65541, 0, 65539, 131077, 0, 65539, 131081, 0, 3, 196613, 0, 65539, 196617, 0, 65539, 262149, 0, 131075, 262153, 0, 65539, 327689, 0, 65539, 393225, 0, 131075 )
+tile_data = PoolIntArray( -1, 0, 4, -65536, 0, 196609, -65535, 0, 196609, -65534, 0, 196609, -65533, 0, 196609, -65532, 0, 196609, -65531, 0, 196609, -65530, 0, 196609, -65529, 0, 196609, -65528, 0, 196609, -65527, 0, 196609, -65526, 0, 7, 65535, 0, 65539, 10, 0, 65539, 131071, 0, 65539, 65546, 0, 65539, 196607, 0, 65539, 131082, 0, 65539, 262143, 0, 65539, 196618, 0, 65539, 327679, 0, 65539, 262154, 0, 65539, 393215, 0, 65539, 327690, 0, 65539, 458751, 0, 196612, 393216, 0, 196609, 393217, 0, 196609, 393218, 0, 196609, 393219, 0, 196609, 393220, 0, 196609, 393221, 0, 196609, 393222, 0, 196609, 393223, 0, 196609, 393224, 0, 196609, 393225, 0, 196609, 393226, 0, 196615 )
 
-[node name="Bat" parent="." instance=ExtResource( 5 )]
-position = Vector2( 64, 48 )
+[node name="ProjectileEnemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 152, 56 )
 
 [editable path="Projectile"]
