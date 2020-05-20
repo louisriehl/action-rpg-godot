@@ -19,8 +19,10 @@ func start_invincibility(duration : float):
 	self.invincible = true
 	timer.start(duration)
 
-func create_hit_effect():
-	var effect = hitEffect.instance()
+func create_hit_effect( x_offset=0, y_offset=0 ):
+	var effect : AnimatedSprite = hitEffect.instance()
+	effect.offset.x = x_offset
+	effect.offset.y = y_offset
 	var main = get_tree().current_scene
 	main.add_child(effect)
 	effect.global_position = global_position
