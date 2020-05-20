@@ -97,7 +97,7 @@ func update_animation_blend(input_vector):
 func _on_HurtBox_area_entered(area):
 	stats.health -= area.damage
 	hurtBox.start_invincibility(0.5)
-	hurtBox.create_hit_effect()
+	hurtBox.create_hit_effect(0, -8)
 	var playerHurtSound = PlayerHurtSound.instance()
 	get_tree().current_scene.add_child(playerHurtSound)
 

@@ -81,7 +81,7 @@ func pick_random_state(state_list):
 func _on_HurtBox_area_entered(area):
 	stats.health -= area.damage
 	knockback = area.knockback_vector * 120
-	hurtBox.create_hit_effect()
+	hurtBox.create_hit_effect(0, -8)
 	hurtBox.start_invincibility(0.4)
 
 func _on_Stats_no_health():
@@ -89,7 +89,6 @@ func _on_Stats_no_health():
 	var enemyDeathEffect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
-
 
 func _on_HurtBox_invincibility_started():
 	animationPlayer.play("Start")
