@@ -111,6 +111,8 @@ ui_roll={
 2d_physics/layer_7="Water"
 2d_physics/layer_8="Cliffs"
 2d_physics/layer_9="EnemyProjectile"
+2d_physics/layer_10="PlayerProjectile"
+2d_physics/layer_11="PlayerHitBox"
 
 [rendering]
 

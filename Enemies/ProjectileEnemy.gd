@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 const Projectile = preload("res://Enemies/Projectile.tscn")
+const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
+onready var stats = $Stats
+onready var hurtBox = $HurtBox
 onready var projectileOrigin = $ProjectileOrigin
 onready var playerDetection = $PlayerDetectionZone
 onready var timer = $Timer
@@ -25,6 +28,11 @@ func _process(_delta):
 			projectileOrigin.position *= Vector2(-1, 0)
 	else:
 		player = null
+		
+func _on_HurtBox_area_entered(area):
+	stats.health -= area.damage
+	hurtBox.create_hit_effect()
+	hurtBox.start_invincibility(0.4)
 
 # for now, just fire a projectile every X seconds
 func _on_Timer_timeout():
@@ -32,6 +40,14 @@ func _on_Timer_timeout():
 		playerPos = player.global_position
 		var projectile = Projectile.instance()
 		projectile.target = playerPos
+		projectile.spawner = global_position
 		var main = get_tree().current_scene
 		projectile.global_position = projectileOrigin.global_position	
 		main.add_child(projectile)
+
+
+func _on_Stats_no_health():
+	queue_free()
+	var enemyDeathEffect = EnemyDeathEffect.instance()
+	get_parent().add_child(enemyDeathEffect)
+	enemyDeathEffect.global_position = global_position
