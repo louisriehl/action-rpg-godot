@@ -26,6 +26,10 @@ position = Vector2( 320, 184 )
 
 [node name="ArenaSpawners" type="Node" parent="."]
 
+[node name="DragonSpawners" type="Node" parent="ArenaSpawners"]
+
+[node name="BatSpawners" type="Node" parent="ArenaSpawners"]
+
 [node name="WaveCooldown" type="Timer" parent="."]
 one_shot = true
 [connection signal="body_entered" from="." to="." method="_on_ArenaArea_body_entered"]
