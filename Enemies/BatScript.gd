@@ -24,6 +24,8 @@ onready var softCollision = $SoftCollision
 onready var wanderController = $WanderController
 onready var animationPlayer = $AnimationPlayer
 
+signal died
+
 const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
 
 func _ready():
@@ -89,6 +91,7 @@ func _on_Stats_no_health():
 	var enemyDeathEffect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
+	emit_signal("died")
 
 func _on_HurtBox_invincibility_started():
 	animationPlayer.play("Start")
