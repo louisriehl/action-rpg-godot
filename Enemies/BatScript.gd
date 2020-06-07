@@ -14,6 +14,7 @@ export var wander_target_range = 4
 
 var knockback = Vector2.ZERO
 var velocity = Vector2.ZERO
+var player_detection_modifier = 1
 export var state = IDLE
 
 onready var stats = $Stats
@@ -24,11 +25,14 @@ onready var softCollision = $SoftCollision
 onready var wanderController = $WanderController
 onready var animationPlayer = $AnimationPlayer
 
+signal died
+
 const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
 
 func _ready():
 	state = pick_random_state([WANDER, IDLE])
 	sprite.play()
+	scale_detection_radius(player_detection_modifier)
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, friction * delta)
@@ -77,6 +81,10 @@ func wander_or_idle():
 func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
+
+# modify detection radius (useful for arenas)
+func scale_detection_radius(modifier):
+	playerDetectionZone.scale_detection_radius(modifier)
 	
 func _on_HurtBox_area_entered(area):
 	stats.health -= area.damage
@@ -89,6 +97,7 @@ func _on_Stats_no_health():
 	var enemyDeathEffect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
+	emit_signal("died")
 
 func _on_HurtBox_invincibility_started():
 	animationPlayer.play("Start")

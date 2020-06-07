@@ -10,13 +10,17 @@ onready var timer = $Timer
 
 export var fire_delay_seconds : float = 1
 
+signal died
+
 var player
 # face Right by default
 var facingVector = transform.x
 var playerPos
+var player_detection_modifier = 1
 
 func _ready():
 	timer.set_wait_time(fire_delay_seconds)
+	playerDetection.scale_detection_radius(player_detection_modifier)
 
 func _process(_delta):
 	if playerDetection.can_see_player():
@@ -47,6 +51,7 @@ func _on_Timer_timeout():
 
 
 func _on_Stats_no_health():
+	emit_signal("died")
 	queue_free()
 	var enemyDeathEffect = EnemyDeathEffect.instance()
 	get_parent().add_child(enemyDeathEffect)
