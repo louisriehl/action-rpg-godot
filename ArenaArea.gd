@@ -53,7 +53,7 @@ func _physics_process(delta):
 		enemies_alive_in_wave = wave.size()
 		for i in range(wave.size()):
 			spawn_enemy(wave[i], i)
-	state = WAVE_UNDERWAY
+		state = WAVE_UNDERWAY
 	
 func spawn_enemy(enemy, iterator):
 	var spawn_point = spawners[iterator]
@@ -61,12 +61,17 @@ func spawn_enemy(enemy, iterator):
 	if enemy == "BAT":
 		var bat = Bat.instance()
 		bat.connect("died", self, "_spawned_enemy_died")
+		bat.player_detection_modifier = 3
 		create_at_spawn(bat, spawn_point)
 	
 func create_at_spawn(entity, spawn):
 	var main = get_tree().current_scene
 	entity.global_position = spawn.global_position	
 	main.add_child(entity)
+	
+func end_arena():
+	camera.reset_limits()
+	queue_free()
 
 func _on_ArenaArea_body_entered(body):
 	camera.set_limits(topLeft, botRight)
@@ -80,7 +85,9 @@ func _on_WaveCooldown_timeout():
 	
 func _spawned_enemy_died():
 	enemies_alive_in_wave -= 1
-	if enemies_alive_in_wave <= 0:
+	if current_wave == waves.size() - 1:
+		end_arena()
+	elif enemies_alive_in_wave <= 0:
 		state = WAVE_COOLDOWN
 		current_wave += 1
 		waveCooldownTimer.start()

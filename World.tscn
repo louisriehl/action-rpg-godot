@@ -804,7 +804,7 @@ margin_right = 53.0
 margin_bottom = 45.0
 
 [node name="ArenaArea" parent="." instance=ExtResource( 15 )]
-waves = [ [ "BAT", "BAT", "BAT" ], [ "DRAGON" ] ]
+waves = [ [ "BAT", "BAT", "BAT" ], [ "BAT" ] ]
 
 [node name="TriggerArea" parent="ArenaArea" index="0"]
 position = Vector2( -48, 64 )
