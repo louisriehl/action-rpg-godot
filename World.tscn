@@ -435,7 +435,7 @@ margin_bottom = 45.0
 waves = [ [ "BAT", "BAT", "BAT" ], [ "BAT", "DRAGON", "DRAGON" ] ]
 
 [node name="TriggerArea" parent="ArenaArea" index="0"]
-position = Vector2( -48, 64 )
+position = Vector2( -40, 72 )
 
 [node name="TopLeft" parent="ArenaArea/ArenaLimits" index="0"]
 position = Vector2( -336, 0 )
