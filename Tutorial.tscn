@@ -46,7 +46,7 @@ tile_data = PoolIntArray( -720917, 0, 0, -720916, 0, 1, -720915, 0, 1, -720914, 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -552, -224 )
+position = Vector2( -552, -216 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -464,7 +464,7 @@ position = Vector2( 88, 88 )
 position = Vector2( 200, 88 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( -552, -224 )
+position = Vector2( -552, -216 )
 
 [node name="TopLeft" parent="Camera2D/Limits" index="0"]
 position = Vector2( -640, -360 )

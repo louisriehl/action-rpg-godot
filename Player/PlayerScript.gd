@@ -28,7 +28,7 @@ onready var animationState = animationTree.get("parameters/playback")
 
 func _ready():
 	randomize()
-	stats.connect("no_health", self, "queue_free")
+	stats.connect("no_health", self, "handle_death")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 
@@ -104,6 +104,10 @@ func _on_HurtBox_area_entered(area):
 func _on_HurtBox_invincibility_started():
 	blinkAnimationPlayer.play("Start")
 
-
 func _on_HurtBox_invincibility_ended():
 	blinkAnimationPlayer.play("Stop")
+	
+func handle_death():
+	print("YOU DIED")
+	SceneChanger.reload_scene()
+	queue_free()
