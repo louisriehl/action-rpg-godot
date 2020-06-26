@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Pickups/HeartPickup.png" type="Texture" id=1]
+[ext_resource path="res://Shadows/SmallShadow.png" type="Texture" id=2]
+[ext_resource path="res://Pickups/HeartPickup.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.01273
+height = 0.649742
+
+[sub_resource type="Animation" id=2]
+resource_name = "Bobbing"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeartSprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 5 ), Vector2( 0, 0 ) ]
+}
+
+[node name="HeartPickup" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="HeartSprite" type="Sprite" parent="."]
+position = Vector2( 0, -15.2758 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 1.78019 )
+
+[node name="Shadow" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Bobbing"
+anims/Bobbing = SubResource( 2 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
