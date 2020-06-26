@@ -520,6 +520,9 @@ position = Vector2( 0, 256 )
 [node name="Position2D4" type="Position2D" parent="ArenaArea/ArenaSpawners/BatSpawners" index="3"]
 position = Vector2( 256, 256 )
 
+[node name="HeartSpawn" parent="ArenaArea" index="5"]
+position = Vector2( 232, 224 )
+
 [node name="LevelTrigger" parent="." instance=ExtResource( 13 )]
 position = Vector2( 672, 240 )
 next_scene = ExtResource( 14 )

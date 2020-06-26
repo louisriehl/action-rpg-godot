@@ -7,11 +7,13 @@ export(NodePath) var cameraPath
 # next time we should use PoolStringArray, more optimized and strongly typed
 export var waves = [[]]
 export var wave_cooldown : float = 1
+export var spawn_pickup : bool = false
 
 # types of enemies to spawn
 var Bat = preload(\"res://Enemies/Bat.tscn\")
 var Dragon = preload(\"res://Enemies/ProjectileEnemy.tscn\")
 var EnemySpawnEffect = preload(\"res://Effects/EnemyDeathEffect.tscn\")
+var HeartPickup = preload(\"res://Pickups/HeartPickup.tscn\")
 
 # boundaries for camera to snap to when arena is activated
 onready var topLeft = $ArenaLimits/TopLeft
@@ -22,6 +24,9 @@ onready var triggerArea = $TriggerArea
 
 # timers
 onready var waveCooldownTimer = $WaveCooldown 
+
+# where to spawn heart
+onready var heartSpawn = $HeartSpawn
 
 var blockers = []
 var bat_spawners = []
@@ -88,6 +93,8 @@ func create_at_spawn(entity, spawn):
 	
 func end_arena():
 	camera.reset_limits()
+	if spawn_pickup:
+		create_at_spawn(HeartPickup.instance(), heartSpawn)
 	queue_free()
 
 func _on_ArenaArea_body_entered(body):
@@ -140,5 +147,11 @@ position = Vector2( 320, 184 )
 
 [node name="WaveCooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="HeartSpawn" type="Position2D" parent="."]
+position = Vector2( 224, 104 )
+__meta__ = {
+"_gizmo_extents_": 35.0
+}
 [connection signal="body_entered" from="." to="." method="_on_ArenaArea_body_entered"]
 [connection signal="timeout" from="WaveCooldown" to="." method="_on_WaveCooldown_timeout"]
