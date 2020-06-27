@@ -473,6 +473,7 @@ position = Vector2( -640, -360 )
 position = Vector2( 640, 360 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 11 )]
 margin_left = 5.0

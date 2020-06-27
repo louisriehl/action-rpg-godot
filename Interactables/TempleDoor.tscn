@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Interactables/TempleDoor.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=6]
+resource_name = "Disappear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 48, 64 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Disappear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Disappear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Disappear"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 16.0
+height = 64.0
+
+[node name="TempleDoor" type="Node2D"]
+position = Vector2( 0, -65 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.75, 1 )
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Sprite"]
+anims/Disappear = SubResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Locks" type="Node" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Locks"]
+position = Vector2( -32, -56 )
+scale = Vector2( 0.1875, 0.3125 )
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Locks/Sprite"]
+anims/Disappear = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Locks"]
+position = Vector2( 32, -56 )
+scale = Vector2( 0.1875, 0.3125 )
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Locks/Sprite2"]
+anims/Disappear = SubResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="Locks"]
+position = Vector2( 0, -40 )
+scale = Vector2( 0.1875, 0.3125 )
+texture = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Locks/Sprite3"]
+anims/Disappear = SubResource( 4 )
+
+[node name="UnlockZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnlockZone"]
+position = Vector2( 0, 64 )
+rotation = 1.5708
+shape = SubResource( 5 )
+[connection signal="body_entered" from="UnlockZone" to="." method="_on_UnlockZone_body_entered"]
