@@ -1,5 +1,7 @@
 extends Node2D
 
+var pickupEffect = preload("res://Effects/PickupEffect.tscn")
+
 onready var particles = $Particles2D
 onready var explosion = $Explosion
 
@@ -8,6 +10,7 @@ func _ready():
 	particles.emitting = true
 	
 func _on_Area2D_body_entered(body):
-	PlayerStats.set_max_health( PlayerStats.max_health + 1)
-	PlayerStats.restore_all_health()
 	queue_free()
+	var effect = pickupEffect.instance()
+	get_parent().add_child(effect)
+	effect.global_position = global_position
