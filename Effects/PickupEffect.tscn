@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Particles/pickedup_particles.tres" type="Material" id=1]
+[ext_resource path="res://Pickups/GlitterParticle.png" type="Texture" id=2]
+[ext_resource path="res://Effects/PickupEffect.gd" type="Script" id=3]
+
+[node name="PickupEffect" type="Particles2D"]
+emitting = false
+amount = 100
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+process_material = ExtResource( 1 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
