@@ -15,7 +15,7 @@
 [ext_resource path="res://TileMaps/WaterTileMap.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Enemies/ProjectileEnemy.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Enemies/ArenaArea.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Pickups/KeyPickup.tscn" type="PackedScene" id=16]
+[ext_resource path="res://World/TemplePillar.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 48 )
@@ -421,8 +421,35 @@ position = Vector2( 96, 192 )
 [node name="Tree4" parent="Node2D/Trees" instance=ExtResource( 10 )]
 position = Vector2( 64, 192 )
 
-[node name="KeyPickup" parent="Node2D" instance=ExtResource( 16 )]
-position = Vector2( 192, 48 )
+[node name="AnimatedSprite" parent="Node2D" instance=ExtResource( 17 )]
+position = Vector2( 232, 58 )
+
+[node name="AnimatedSprite2" parent="Node2D" instance=ExtResource( 17 )]
+position = Vector2( 248, 42 )
+
+[node name="AnimatedSprite3" parent="Node2D" instance=ExtResource( 17 )]
+position = Vector2( 264, 26 )
+
+[node name="AnimatedSprite9" parent="Node2D" instance=ExtResource( 17 )]
+position = Vector2( 152, -118 )
+
+[node name="AnimatedSprite8" parent="Node2D" instance=ExtResource( 17 )]
+position = Vector2( 168, -134 )
+
+[node name="AnimatedSprite7" parent="Node2D" instance=ExtResource( 17 )]
+position = Vector2( 184, -150 )
+
+[node name="AnimatedSprite6" parent="Node2D" instance=ExtResource( 17 )]
+position = Vector2( 136, -78 )
+offset = Vector2( -8, 38 )
+
+[node name="AnimatedSprite5" parent="Node2D" instance=ExtResource( 17 )]
+position = Vector2( 136, -80 )
+offset = Vector2( 8, 22 )
+
+[node name="AnimatedSprite4" parent="Node2D" instance=ExtResource( 17 )]
+position = Vector2( 136, -80 )
+offset = Vector2( 24, 6 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
