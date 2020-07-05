@@ -20,6 +20,7 @@ radius = 22.9681
 [node name="TutorialSign" type="Node2D"]
 script = ExtResource( 3 )
 fade_time = 0.5
+sign_text = "Thanks for testing! This is a really long sentence!"
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
@@ -35,8 +36,8 @@ position = Vector2( 0, -2.86073 )
 shape = SubResource( 1 )
 
 [node name="Control" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = -16.0
+margin_bottom = -16.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,9 +48,10 @@ margin_top = -53.6436
 margin_right = 92.3992
 margin_bottom = -18.6436
 custom_fonts/font = SubResource( 2 )
-text = "Font example"
+text = "Sample Text"
 align = 1
 valign = 2
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

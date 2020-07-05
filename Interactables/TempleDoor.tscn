@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Interactables/TempleDoor.png" type="Texture" id=1]
 [ext_resource path="res://Interactables/TempleDoor.gd" type="Script" id=2]
 [ext_resource path="res://Interactables/Lock.png" type="Texture" id=3]
 
@@ -19,8 +19,8 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 48, 64 )
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 32, 47 )
 
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"
@@ -65,16 +65,16 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 16.0
-height = 64.0
+radius = 8.99994
+height = 46.0001
 
 [node name="TempleDoor" type="Node2D"]
-position = Vector2( 0, -65 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.75, 1 )
+position = Vector2( 0, 17 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -65 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Sprite"]
 anims/Disappear = SubResource( 1 )
@@ -83,26 +83,30 @@ anims/Disappear = SubResource( 1 )
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 2 )
+position = Vector2( 0, -47 )
+shape = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Locks" type="Node" parent="."]
+[node name="Locks" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Locks"]
-position = Vector2( -24, -40 )
+position = Vector2( -16, -49 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Locks/Sprite"]
 anims/Disappear = SubResource( 3 )
 
 [node name="Sprite2" type="Sprite" parent="Locks"]
-position = Vector2( 24, -40 )
+position = Vector2( 16, -49 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Locks/Sprite2"]
 anims/Disappear = SubResource( 4 )
 
 [node name="Sprite3" type="Sprite" parent="Locks"]
-position = Vector2( 0, -32 )
+position = Vector2( 0, -29 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Locks/Sprite3"]
@@ -113,7 +117,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UnlockZone"]
-position = Vector2( 0, 64 )
 rotation = 1.5708
 shape = SubResource( 6 )
 [connection signal="body_entered" from="UnlockZone" to="." method="_on_UnlockZone_body_entered"]
