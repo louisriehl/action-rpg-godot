@@ -532,13 +532,13 @@ __meta__ = {
 position = Vector2( -176, -216 )
 
 [node name="Sprite" parent="TempleDoor/Locks" index="0"]
-position = Vector2( -200, -191 )
+position = Vector2( -192, -200 )
 
 [node name="Sprite2" parent="TempleDoor/Locks" index="1"]
-position = Vector2( -152, -191 )
+position = Vector2( -160, -200 )
 
 [node name="Sprite3" parent="TempleDoor/Locks" index="2"]
-position = Vector2( -176, -183 )
+position = Vector2( -176, -180 )
 
 [editable path="Camera2D"]
 
