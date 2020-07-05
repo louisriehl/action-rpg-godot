@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Pickups/HeartPickup.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Interactables/TempleDoor.tscn" type="PackedScene" id=19]
 [ext_resource path="res://TileMaps/TempleTileMap.tscn" type="PackedScene" id=20]
+[ext_resource path="res://level_load.gd" type="Script" id=21]
 [ext_resource path="res://Utils/LevelTrigger.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -29,6 +30,7 @@ extents = Vector2( 8, 48 )
 extents = Vector2( 24, 10 )
 
 [node name="main_world" type="Node2D"]
+script = ExtResource( 21 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 1, 0 )
@@ -597,6 +599,11 @@ next_scene = "res://tutorial_world.tscn"
 [node name="CollisionShape2D" parent="LevelTrigger" index="0"]
 position = Vector2( 240, -240 )
 shape = SubResource( 2 )
+
+[node name="PlayerSpawns" type="Node" parent="."]
+
+[node name="tutorial_world" type="Position2D" parent="PlayerSpawns"]
+position = Vector2( 240, -176 )
 
 [editable path="Camera2D"]
 
