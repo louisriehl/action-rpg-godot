@@ -2,14 +2,17 @@
 
 [ext_resource path="res://Enemies/Bat.png" type="Texture" id=1]
 [ext_resource path="res://Shadows/SmallShadow.png" type="Texture" id=2]
-[ext_resource path="res://Colliders/HurtBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Colliders/hurt_box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/BatScript.gd" type="Script" id=4]
 [ext_resource path="res://Utils/Stats.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Colliders/HitBox.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Colliders/hit_box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Colliders/soft_collision.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/WanderController.tscn" type="PackedScene" id=9]
 [ext_resource path="res://white_color.shader" type="Shader" id=10]
+
+
+
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
