@@ -525,9 +525,15 @@ position = Vector2( 256, 256 )
 [node name="HeartSpawn" parent="ArenaArea" index="5"]
 position = Vector2( 232, 224 )
 
+[node name="PlayerSpawns" type="Node" parent="."]
+
+[node name="main_world" type="Position2D" parent="PlayerSpawns"]
+position = Vector2( 624, 256 )
+
 [node name="LevelTrigger" parent="." instance=ExtResource( 14 )]
 position = Vector2( 672, 240 )
 next_scene = "res://main_world.tscn"
+leave_direction = Vector2( 1, 0 )
 
 [node name="CollisionShape2D" parent="LevelTrigger" index="0"]
 position = Vector2( -16, 16 )

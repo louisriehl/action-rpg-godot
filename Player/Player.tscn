@@ -10,8 +10,6 @@
 [ext_resource path="res://Music and Sounds/Evade.wav" type="AudioStream" id=8]
 [ext_resource path="res://white_color.shader" type="Shader" id=9]
 
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 9 )
 shader_param/active = false
@@ -877,9 +875,12 @@ shape = SubResource( 50 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -18.702
+
+[node name="EntryTimer" type="Timer" parent="."]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincibility_ended" from="HurtBox" to="." method="_on_HurtBox_invincibility_ended"]
 [connection signal="invincibility_started" from="HurtBox" to="." method="_on_HurtBox_invincibility_started"]
+[connection signal="timeout" from="EntryTimer" to="." method="_on_EntryTimer_timeout"]
 
 [editable path="SwordPivot/SwordHitbox"]
 

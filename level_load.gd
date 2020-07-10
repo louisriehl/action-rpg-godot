@@ -1,20 +1,13 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+onready var player = $YSort/Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var player_spawns = get_node_or_null("PlayerSpawns")
+	assert(player_spawns != null)
+	assert(player != null)
 	if PlayerStats.previous_level != "":
-		print("need to load level " + PlayerStats.previous_level)
-	else:
-		print("no previous level!")
-		
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		var player_spawn = player_spawns.get_node(PlayerStats.previous_level)
+		if player_spawn != null:
+			player.global_position = player_spawn.global_position
