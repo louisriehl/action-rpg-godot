@@ -2,10 +2,14 @@ extends CanvasLayer
 
 onready var transitionPlayer = $AnimationPlayer
 
-func change_scene(next_scene : PackedScene):
+func change_scene(next_scene : String, 
+		previous_scene : String, 
+		leave_direction :Vector2):
 	transitionPlayer.play("TransitionOut")
 	yield(transitionPlayer, "animation_finished")
-	assert(get_tree().change_scene_to( next_scene) == OK)
+	PlayerStats.previous_level = previous_scene
+	PlayerStats.previous_direction = leave_direction
+	assert(get_tree().change_scene( next_scene) == OK)
 	transitionPlayer.play("TransitionIn")
 	yield(transitionPlayer, "animation_finished")
 	

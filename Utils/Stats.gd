@@ -6,6 +6,8 @@ const max_keys = 3
 export var max_health : int = 1 setget set_max_health
 var health : int = max_health setget set_health
 var keys : int = 0 setget set_keys
+var previous_level : String = "" setget set_previous_level
+var previous_direction : Vector2 = Vector2.ZERO
 
 signal no_health
 signal health_changed(value)
@@ -32,3 +34,6 @@ func set_keys(value):
 	
 func restore_all_health():
 	self.health = max_health
+	
+func set_previous_level(level):
+	previous_level = level

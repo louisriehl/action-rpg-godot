@@ -10,12 +10,14 @@ export var ROLL_SPEED_MODIFIER = 125
 onready var stats = PlayerStats
 
 enum {
+	FORCE,
 	MOVE,
 	ROLL,
 	ATTACK
 }
 
 var velocity : Vector2 = Vector2.ZERO
+var enter_vector : Vector2 = Vector2.ZERO
 var roll_vector : Vector2 = Vector2.DOWN
 var state = MOVE
 
@@ -24,6 +26,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 onready var animationTree = $AnimationTree
 onready var hurtBox = $HurtBox
+onready var entryTimer = $EntryTimer
 onready var animationState = animationTree.get("parameters/playback")
 
 func _ready():
@@ -31,6 +34,10 @@ func _ready():
 	stats.connect("no_health", self, "handle_death")
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
+	enter_vector = PlayerStats.previous_direction
+	if enter_vector != Vector2.ZERO:	
+		state = FORCE
+		entryTimer.start()
 
 func _physics_process(delta):
 	match state:
@@ -40,6 +47,14 @@ func _physics_process(delta):
 			roll_state(delta)
 		ATTACK:
 			attack_state()
+		FORCE:
+			force_state(delta)
+			
+func force_state(delta):
+	velocity = enter_vector * MAX_SPEED
+	update_animation_blend(enter_vector)
+	animationState.travel("Run")
+	move()
 
 func move_state(delta): 
 
@@ -111,3 +126,11 @@ func handle_death():
 	print("YOU DIED")
 	SceneChanger.reload_scene()
 	queue_free()
+	
+func trigger_force_walk(direction):
+	enter_vector = direction
+	state = FORCE
+	entryTimer.start()
+
+func _on_EntryTimer_timeout():
+	state = MOVE
