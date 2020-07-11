@@ -15,20 +15,20 @@
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Utils/LevelTrigger.tscn" type="PackedScene" id=14]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 48, 24 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32, 10 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 10, 40 )
-
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 10, 32 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10, 24 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 32, 10 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 40, 8 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 8, 32 )
 
 [node name="tutorial_world" type="Node2D"]
 script = ExtResource( 1 )
@@ -485,49 +485,6 @@ margin_top = 5.0
 margin_right = 50.0
 margin_bottom = 42.0
 
-[node name="ArenaArea" parent="." instance=ExtResource( 11 )]
-cameraPath = NodePath("../Camera2D")
-waves = [ [ "BAT", "BAT" ], [ "BAT", "BAT", "BAT" ] ]
-
-[node name="TriggerArea" parent="ArenaArea" index="0"]
-position = Vector2( 128, 200 )
-shape = SubResource( 1 )
-
-[node name="TopLeft" parent="ArenaArea/ArenaLimits" index="0"]
-position = Vector2( -64, 128 )
-
-[node name="BotRight" parent="ArenaArea/ArenaLimits" index="1"]
-position = Vector2( 320, 320 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="ArenaArea/ArenaBlockers" index="0"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaArea/ArenaBlockers/StaticBody2D"]
-position = Vector2( 128, 152 )
-shape = SubResource( 2 )
-disabled = true
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="ArenaArea/ArenaBlockers" index="1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaArea/ArenaBlockers/StaticBody2D2"]
-position = Vector2( 312, 248 )
-shape = SubResource( 3 )
-disabled = true
-
-[node name="Position2D" type="Position2D" parent="ArenaArea/ArenaSpawners/BatSpawners" index="0"]
-position = Vector2( 32, 176 )
-
-[node name="Position2D2" type="Position2D" parent="ArenaArea/ArenaSpawners/BatSpawners" index="1"]
-position = Vector2( 248, 176 )
-
-[node name="Position2D3" type="Position2D" parent="ArenaArea/ArenaSpawners/BatSpawners" index="2"]
-position = Vector2( 0, 256 )
-
-[node name="Position2D4" type="Position2D" parent="ArenaArea/ArenaSpawners/BatSpawners" index="3"]
-position = Vector2( 256, 256 )
-
-[node name="HeartSpawn" parent="ArenaArea" index="5"]
-position = Vector2( 232, 224 )
-
 [node name="PlayerSpawns" type="Node" parent="."]
 
 [node name="main_world" type="Position2D" parent="PlayerSpawns"]
@@ -546,6 +503,46 @@ shape = SubResource( 4 )
 position = Vector2( -32, 16 )
 shape = SubResource( 5 )
 
+[node name="TutorialArena" parent="." instance=ExtResource( 11 )]
+position = Vector2( 128, 152 )
+cameraPath = NodePath("../Camera2D")
+waves = [ [ "BAT", "BAT" ], [ "BAT", "BAT", "BAT" ] ]
+
+[node name="TriggerArea" parent="TutorialArena" index="0"]
+position = Vector2( 0, 24 )
+shape = SubResource( 6 )
+
+[node name="TopLeft" parent="TutorialArena/ArenaLimits" index="0"]
+position = Vector2( -32, 128 )
+
+[node name="BotRight" parent="TutorialArena/ArenaLimits" index="1"]
+position = Vector2( 320, 296 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TutorialArena/ArenaBlockers" index="0"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialArena/ArenaBlockers/StaticBody2D"]
+position = Vector2( 128, 144 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="TutorialArena/ArenaBlockers" index="1"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialArena/ArenaBlockers/StaticBody2D2"]
+position = Vector2( 296, 264 )
+shape = SubResource( 8 )
+disabled = true
+
+[node name="Position2D" type="Position2D" parent="TutorialArena/ArenaSpawners/BatSpawners" index="0"]
+position = Vector2( 24, 176 )
+
+[node name="Position2D2" type="Position2D" parent="TutorialArena/ArenaSpawners/BatSpawners" index="1"]
+position = Vector2( 256, 176 )
+
+[node name="Position2D3" type="Position2D" parent="TutorialArena/ArenaSpawners/BatSpawners" index="2"]
+position = Vector2( 48, 256 )
+
 [editable path="YSort/Signs/TutorialSign"]
 
 [editable path="YSort/Signs/TutorialSign2"]
@@ -554,6 +551,6 @@ shape = SubResource( 5 )
 
 [editable path="Camera2D"]
 
-[editable path="ArenaArea"]
-
 [editable path="LevelTrigger"]
+
+[editable path="TutorialArena"]

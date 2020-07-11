@@ -24,6 +24,7 @@ node/name_casing=2
 
 PlayerStats="*res://Player/PlayerStats.tscn"
 SceneChanger="*res://UI/SceneChanger.tscn"
+LevelData="*res://Utils/LevelData.tscn"
 
 [display]
 

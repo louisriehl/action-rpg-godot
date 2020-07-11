@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
@@ -45,6 +45,8 @@ enum {
 var camera : Camera2D
 
 func _ready():
+	if LevelData.is_arena_cleared(self.name):
+		queue_free()
 	if cameraPath:
 		camera = get_node(cameraPath)
 	else:
@@ -95,6 +97,7 @@ func end_arena():
 	camera.reset_limits()
 	if spawn_pickup:
 		create_at_spawn(HeartPickup.instance(), heartSpawn)
+	LevelData.set_arena_cleared(self.name)
 	queue_free()
 
 func _on_ArenaArea_body_entered(body):
@@ -118,9 +121,6 @@ func _spawned_enemy_died():
 			waveCooldownTimer.start()
 "
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 24 )
-
 [node name="ArenaArea" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
@@ -128,7 +128,6 @@ script = SubResource( 1 )
 
 [node name="TriggerArea" type="CollisionShape2D" parent="."]
 position = Vector2( 176, 96 )
-shape = SubResource( 2 )
 
 [node name="ArenaLimits" type="Node" parent="."]
 
