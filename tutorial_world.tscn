@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://level_load.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=2]
@@ -26,6 +26,9 @@ extents = Vector2( 10, 40 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 10, 32 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10, 24 )
 
 [node name="tutorial_world" type="Node2D"]
 script = ExtResource( 1 )
@@ -538,6 +541,10 @@ leave_direction = Vector2( 1, 0 )
 [node name="CollisionShape2D" parent="LevelTrigger" index="0"]
 position = Vector2( -16, 16 )
 shape = SubResource( 4 )
+
+[node name="CollisionShape2D" parent="LevelTrigger/ForceWalker" index="0"]
+position = Vector2( -32, 16 )
+shape = SubResource( 5 )
 
 [editable path="YSort/Signs/TutorialSign"]
 

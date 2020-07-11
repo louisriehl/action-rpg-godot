@@ -10,3 +10,6 @@ func _ready():
 
 func _on_LevelTrigger_body_entered(body):
 	SceneChanger.change_scene(next_scene, current_level, leave_direction)
+
+func _on_ForceWalker_body_entered(body):
+	body.trigger_force_walk(leave_direction)

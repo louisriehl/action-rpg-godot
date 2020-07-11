@@ -877,6 +877,7 @@ stream = ExtResource( 8 )
 volume_db = -18.702
 
 [node name="EntryTimer" type="Timer" parent="."]
+wait_time = 0.6
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="invincibility_ended" from="HurtBox" to="." method="_on_HurtBox_invincibility_ended"]
 [connection signal="invincibility_started" from="HurtBox" to="." method="_on_HurtBox_invincibility_started"]
